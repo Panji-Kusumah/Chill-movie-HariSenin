@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
+
+/* --- 1. RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #141414;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* --- 2. NAVBAR --- */
+nav {
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo-img {
+    height: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+/* PROFILE DROPDOWN */
+.avatar-container {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #181818;
+    border-radius: 8px;
+    padding: 10px 0;
+    width: 180px;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.avatar-container:hover .profile-dropdown {
+    display: block;
+}
+
+.profile-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* --- 3. HERO --- */
+.hero {
+    position: relative;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(20, 20, 20, 0.8) 0%, transparent 60%),
+                linear-gradient(to top, #141414 10%, transparent 60%);
+    z-index: 1;
+}
+
+.hero-content-wrapper {
+    width: 100%;
+    max-width: 1440px;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-info {
+    position: absolute;
+    bottom: 15%;
+    left: 60px;
+    max-width: 550px;
+}
+
+.hero-info h1 {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.hero-info p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* FIXED BUTTONS & SPEAKER ALIGNMENT */
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Supaya tidak hancur di layar kecil */
+}
+
+.btn-main {
+    background: #2563eb;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-info {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 100px;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.age {
+    border: 1px solid white;
+    padding: 5px 12px;
+    border-radius: 50px;
+}
+
+.hero-speaker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.speaker-img {
+    width: 20px;
+    height: 20px;
+}
+
+/* --- 4. SECTION & CARDS --- */
+.section {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 40px 60px 10px 60px;
+}
+
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.row-container {
+    position: relative;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 15px 0;
+}
+
+.row::-webkit-scrollbar {
+    display: none;
+}
+
+.card-landscape,
+.card-portrait {
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.card-landscape { width: 302px; height: 170px; }
+.card-portrait { width: 212px; height: 318px; }
+
+.card-landscape img,
+.card-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-landscape:hover,
+.card-portrait:hover {
+    transform: scale(1.08);
+    z-index: 5;
+}
+
+.badge-baru {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #2563eb;
+    color: white;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+/* ARROWS */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.arrow-left { left: -22px; }
+.arrow-right { right: -22px; }
+
+/* --- 5. FOOTER --- */
+footer {
+    border-top: 1px solid #282828;
+    margin-top: 50px;
+    padding: 60px 0;
+}
+
+.footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.footer-genre-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px 40px;
+}
+
+.footer-col a {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer-col a:hover {
+    color: white;
+}
+
+/* --- 6. RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .nav-container, .section, .footer-container { padding: 0 30px; }
+    .footer-top { flex-direction: column; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; } 
+    .hero-info h1 { font-size: 32px; }
+    .hero-info p { font-size: 14px; }
+    .card-landscape { width: 240px; height: 135px; }
+    .card-portrait { width: 160px; height: 240px; }
+    .footer-genre-grid { grid-template-columns: repeat(2, 1fr); }
+}
